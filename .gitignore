@@ -6,6 +6,10 @@
 # VS Code dir
 .vscode
 
+# SQLite temp files
+*.db-shm
+*.db-wal
+
 # User-specific files
 *.rsuser
 *.suo
