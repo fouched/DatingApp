@@ -13,6 +13,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
+using API.Services;
+using API.Interfaces;
 
 namespace API
 {
@@ -25,9 +27,11 @@ namespace API
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // This method gets called by the runtime.
+        // Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ITokenService, TokenService>();
             services.AddDbContext<DataContext>(options =>
             {
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
